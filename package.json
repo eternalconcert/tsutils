@@ -1,0 +1,27 @@
+{
+  "name": "@softcreate/tsutils",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "/dist"
+  ],
+  "dependencies": {
+    "@types/react": "^17.0.3",
+    "rxjs": "^7.0.1"
+  },
+  "author": "Christian Kokoska",
+  "license": "GPL-3.0",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eternalconcert/tsutils.git"
+  },
+  "bugs": {
+    "url": "https://github.com/eternalconcert/tsutils/issues"
+  },
+  "homepage": "https://github.com/eternalconcert/tsutils#readme",
+  "description": ""
+}
