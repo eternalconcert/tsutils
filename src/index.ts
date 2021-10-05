@@ -1,3 +1,3 @@
-export { BaseApi } from "./Api";
-export { useItemFetcher, useItemsFetcher, useWatcher } from "./Hooks";
-export { encodeParams } from "./Utils";
+export { BaseApi } from "./api";
+export { useItemFetcher, useItemsFetcher, useWatcher } from "./hooks";
+export { encodeParams } from "./utils";
