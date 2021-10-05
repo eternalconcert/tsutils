@@ -1,5 +1,5 @@
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
-import { from, timer } from "rxjs";
+import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
+import { from, Observable, timer } from "rxjs";
 import { switchMap } from "rxjs/operators";
 import { BaseApi } from "./Api";
 
@@ -32,4 +32,22 @@ export const useWatcher = <T,>(callback: () => Promise<T>): [T | undefined, Disp
   }, [])
 
   return [state, setState];
+}
+
+
+export const useObservable = <T,>(obs: Observable<T>): T | null => {
+  const [current, setCurrent] = useState<T | null>(null);
+  const obsRef = useRef(obs);
+
+  useEffect(() => {
+    obsRef.current = obs;
+    setCurrent(null);
+
+    const sub = obs.subscribe((c) => { setCurrent(c); });
+    return () => {
+      sub.unsubscribe();
+    };
+  }, [obs]);
+
+  return Object.is(obsRef.current, obs) ? current : null;
 }
