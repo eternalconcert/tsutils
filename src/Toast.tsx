@@ -1,4 +1,4 @@
-import React, { FC, ReactNode } from 'react';
+import React, { FC } from 'react';
 import { BehaviorSubject } from 'rxjs';
 import { useObservable } from './hooks';
 
@@ -26,7 +26,7 @@ export const ToastList: FC = () => {
   }
 
   return (
-    <div className={'toast'}>
+    <div className={'toasts'}>
       { messages.map((toast, index) => (
         <div key={index} className={`card bg-${toast.variant || 'success'} mb-3`} style={{ width: '20rem' }}>
           <div className={'card-header text-white'}>
