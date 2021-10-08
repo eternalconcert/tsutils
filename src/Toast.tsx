@@ -1,6 +1,6 @@
 import React, { FC, ReactNode } from 'react';
 import { BehaviorSubject } from 'rxjs';
-import { useObservable } from './Hooks';
+import { useObservable } from './hooks';
 
 interface Toast {
   title: string,

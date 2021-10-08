@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
 import { from, Observable, timer } from "rxjs";
 import { switchMap } from "rxjs/operators";
-import { BaseApi } from "./Api";
+import { BaseApi } from "./api";
 
 
 export const useItemFetcher = <T,>(api: BaseApi<T>): [T | undefined, Dispatch<SetStateAction<T | undefined>>]=> {
