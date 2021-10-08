@@ -15,5 +15,3 @@ export class BaseApi<T> {
       `${this.url}/${params ? `?${encodeParams(params)}` : '' }`)
     .then(val => val.json()).then(r => r.items);
 }
-
-export const nodesApi = new BaseApi<Node>('/api/nodes');
