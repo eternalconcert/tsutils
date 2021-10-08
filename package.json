@@ -1,12 +1,13 @@
 {
   "name": "@eternalconcert/tsutils",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
     "/dist"
   ],
   "dependencies": {
+    "@babel/preset-typescript": "^7.15.0",
     "@types/react": "^17.0.3",
     "rxjs": "^7.0.1"
   },
