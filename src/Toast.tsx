@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { CSSProperties, FC } from 'react';
 import { BehaviorSubject } from 'rxjs';
 import { useObservable } from './hooks';
 
@@ -25,8 +25,15 @@ export const ToastList: FC = () => {
     toastStream.next(toastStream.getValue().filter((t) => t !== message));
   }
 
+  const style: CSSProperties = {
+    position: 'fixed',
+    zIndex: 1045,
+    top: 70,
+    right: 20,
+  };
+
   return (
-    <div className={'toasts'}>
+    <div className={'toasts'} style={style}>
       { messages.map((toast, index) => (
         <div key={index} className={`card bg-${toast.variant || 'success'} mb-3`} style={{ width: '20rem' }}>
           <div className={'card-header text-white'}>
