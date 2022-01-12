@@ -6,8 +6,12 @@ import { BaseApi } from "./api";
 
 export const useItemFetcher = <T,>(api: BaseApi<T>): [T | undefined, Dispatch<SetStateAction<T | undefined>>]=> {
   const [ state, setState ] = useState<T>();
+  const abortController = new AbortController();
+
   useEffect(() => {
     api.fetchItem().then(v => setState(v));
+
+    return () => abortController.abort();
   }, []);
   return [state, setState];
 }
@@ -15,8 +19,12 @@ export const useItemFetcher = <T,>(api: BaseApi<T>): [T | undefined, Dispatch<Se
 
 export const useItemsFetcher = <T,>(api: BaseApi<T>): [T[] | undefined, Dispatch<SetStateAction<T[] | undefined>>]=> {
   const [ state, setState ] = useState<T[]>();
+  const abortController = new AbortController();
+
   useEffect(() => {
     api.fetchItems().then(v => setState(v));
+
+    return () => abortController.abort();
   }, []);
   return [state, setState];
 }
