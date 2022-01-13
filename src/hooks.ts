@@ -30,7 +30,7 @@ export const useItemsFetcher = <T,>(api: BaseApi<T>): [T[] | undefined, Dispatch
 }
 
 
-export const useWatcher = <T,>(callback: () => Promise<T>): [T | undefined, Dispatch<SetStateAction<T | undefined>>, any]=> {
+export const useWatcher = <T,>(callback: () => Promise<T>, dependencies: any[]): [T | undefined, Dispatch<SetStateAction<T | undefined>>, any]=> {
   const [ state, setState ] = useState<T>();
   const [ err, setErr ] = useState<any>(null);
   const obs = timer(0, 2000).pipe(switchMap(() => from(callback())));
@@ -43,10 +43,11 @@ export const useWatcher = <T,>(callback: () => Promise<T>): [T | undefined, Disp
     )
 
     return () => sub.unsubscribe();
-  }, [])
+  }, dependencies)
 
   return [state, setState, err];
 }
+
 
 export const useObservable = <T,>(obs: Observable<T>): T | null => {
   const [current, setCurrent] = useState<T | null>(null);
